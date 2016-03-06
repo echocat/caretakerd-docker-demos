@@ -2,7 +2,7 @@ FROM alpine:3.3
 
 MAINTAINER "echocat" contact@echocat.org
 
-RUN apk add --update curl bash \
+RUN apk add --update curl bash procps \
     && rm -rf /var/cache/apk/*
 
 RUN curl -SL https://github.com/echocat/caretakerd/releases/download/v0.1.5/caretakerd-linux-amd64.tar.gz \
