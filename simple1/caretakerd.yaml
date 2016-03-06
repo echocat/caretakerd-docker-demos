@@ -1,0 +1,7 @@
+services:
+    myProgram:
+        type: master
+        command: ["myProgram.sh", "30"]
+
+    myTool:
+        command: ["myTool.sh"]
