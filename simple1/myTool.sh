@@ -4,12 +4,10 @@ location="`readlink -f \"${0}\"`"
 
 function goDown() {
 	echo "${location} received interrupt signal. Bye!"
-	CPIDS=`pgrep -P $$`
-	kill -SIGTERM ${CPIDS} 2> /dev/null
 	exit 0
 }
 
-trap goDown SIGHUP SIGINT SIGTERM
+trap goDown SIGINT
 
 echo "${location} is there for you..."
 

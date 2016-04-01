@@ -1,12 +1,12 @@
-FROM alpine:3.3
+FROM alpine
 
 MAINTAINER "echocat" contact@echocat.org
+ARG caretakerdDownloadUrl
 
 RUN apk add --update curl bash procps \
     && rm -rf /var/cache/apk/*
 
-RUN curl -SL https://github.com/echocat/caretakerd/releases/download/v0.1.5/caretakerd-linux-amd64.tar.gz \
-    | tar -xz --exclude caretakerd.html -C /usr/bin
+RUN curl -SL ${caretakerdDownloadUrl} | tar -xz --exclude caretakerd.html -C /usr/bin
 
 COPY caretakerd.yaml /etc/caretakerd.yaml
 COPY myProgram.sh /usr/bin/myProgram.sh

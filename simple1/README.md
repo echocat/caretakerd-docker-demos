@@ -10,15 +10,17 @@ This only spawns to processes...
 ## Usage
 
 ```bash
-docker run --rm echocat/caretakerd-docker-demos-simple1 [<seconds myProgram.sh runs>]
+docker run -ti --rm echocat/caretakerd-docker-demos-simple1 [<seconds myProgram.sh runs>]
 ```
+
+> *Hint*: At this point ``-ti`` is required to receive (in combination with shell scripts) the [Ctrl]+[C] signal in the right way. If a container runs unattended this is not required.
 
 ## Examples
 
 ```bash
 # Whole container will run for 10 seconds (default value of myProgram.sh)
-docker run --rm echocat/caretakerd-docker-demos-simple1
+docker run -ti --rm echocat/caretakerd-docker-demos-simple1
 
 # Whole container will run for 60 seconds
-docker run --rm echocat/caretakerd-docker-demos-simple1 60
+docker run -ti --rm echocat/caretakerd-docker-demos-simple1 60
 ```

@@ -8,12 +8,10 @@ fi
 
 function goDown() {
 	echo "${location} received interrupt signal. Bye!"
-	CPIDS=`pgrep -P $$`
-	kill -SIGTERM ${CPIDS} 2> /dev/null
 	exit 0
 }
 
-trap goDown SIGHUP SIGINT SIGTERM
+trap goDown SIGINT
 
 echo "${location} sleeps for ${sleepDurationInSeconds} seconds..."
 
