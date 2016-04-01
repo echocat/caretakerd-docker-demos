@@ -1,0 +1,18 @@
+services:
+    nginx:
+        type: master
+        preCommands:
+        - ["mkdir","-p","/opt/app/var/tmp"]
+        - ["mkdir","-p","/opt/app/var/logs"]
+        command: ["nginx"]
+        logger:
+            pattern: "[%c] %m%n"
+
+    php-fpm:
+        preCommands:
+        - ["mkdir","-p","/opt/app/var/logs"]
+        command: ["php-fpm","-R","-F"]
+        stopSignal: INT
+        logger:
+            pattern: "[%c] %m%n"
+
