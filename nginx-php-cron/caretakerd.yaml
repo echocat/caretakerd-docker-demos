@@ -15,3 +15,8 @@ services:
         logger:
             pattern: "[%c] %m%n"
 
+    increment-counter:
+        preCommands:
+        - ["mkdir","-p","/opt/app/var"]
+        command: ["php","-f","/opt/app/scripts/increment-counter.php"]
+        cronExpression: "@every 5s"

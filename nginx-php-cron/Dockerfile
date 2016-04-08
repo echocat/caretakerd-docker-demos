@@ -2,7 +2,7 @@ FROM alpine
 
 MAINTAINER "echocat" contact@echocat.org
 
-RUN apk add --update curl nginx php-fpm musl ca-certificates
+RUN apk add --update curl nginx php-fpm php-cli musl ca-certificates
 
 RUN curl -SLk https://caretakerd.echocat.org/latest/download/caretakerd-linux-amd64.tar.gz | tar -xz --exclude caretakerd.html -C /usr/bin
 
@@ -19,6 +19,7 @@ COPY caretakerd.yaml /etc/caretakerd.yaml
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY php-fpm.conf /etc/php/php-fpm.conf
 COPY htdocs /opt/app/htdocs
+COPY scripts /opt/app/scripts
 
 EXPOSE 8080
 

@@ -2,7 +2,6 @@ services:
     myProgram:
         type: master
         command: ["myProgram.sh"]
-        # At this point INT is required because of signal handling of the shell scripts...
         stopSignal: INT
 
     myTool:

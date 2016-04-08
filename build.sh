@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-caretakerdVersion="v0.1.6"
-caretakerdDownloadUrl="https://github.com/echocat/caretakerd/releases/download/${caretakerdVersion}/caretakerd-linux-amd64.tar.gz"
-
 oldDir="`pwd`"
 function cleanup {
 	cd "$oldDir"
@@ -14,12 +11,18 @@ location="`readlink -f \"${0}\"`"
 baseDir="`dirname \"${location}\"`"
 
 filter="*"
-if [ "${1}" != "" ]; then
+deploy="no"
+
+if [ "${1}" == "all" ]; then
+	filter="*"
+elif [ "${1}" == "deploy" ]; then
+	deploy="yes"
+elif [ "${1}" != "" ]; then
 	filter="${1}"
 fi
-deploy="no"
-if [ "${2}" != "" ]; then
-	deploy="${2}"
+
+if [ "${2}" == "deploy" ]; then
+	deploy="yes"
 fi
 
 dockerFiles="`find \"${baseDir}\" -path \"${baseDir}/${filter}/Dockerfile\" -name \"Dockerfile\"`"
@@ -40,7 +43,6 @@ for dockerFile in ${dockerFiles}; do
 		docker build \
 			--pull \
 			-t "${tag}" \
-			--build-arg "caretakerdDownloadUrl=${caretakerdDownloadUrl}" \
 			"${root}"
 		echo "INFO: Going to build ${tag}... DONE!"
 
