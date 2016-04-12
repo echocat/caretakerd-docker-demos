@@ -1,0 +1,9 @@
+services:
+    myProgram:
+        type: master
+        command: ["myProgram.sh"]
+        stopSignal: INT
+
+    myTool:
+        command: ["myTool.sh"]
+        stopSignal: INT
