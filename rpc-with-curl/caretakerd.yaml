@@ -1,0 +1,15 @@
+rpc:
+    enabled: true
+
+services:
+    king:
+        type: master
+        command: ["master.sh"]
+        access:
+            type: generateToFile
+            pemFile: /var/run/caretakerd.master.pem
+            permission: readWrite
+
+    peasant:
+        type: onDemand
+        command: ["echo","Hello! I'am a peasant and I will only run on kings will."]
