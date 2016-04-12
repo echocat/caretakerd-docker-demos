@@ -10,7 +10,7 @@ This only spawns to processes...
 ## Usage
 
 ```bash
-docker run --rm echocat/caretakerd-demo-simple1 [<seconds myProgram.sh runs>]
+docker run --rm echocat/caretakerd-demo-simple-processes [<seconds myProgram.sh runs>]
 ```
 
 ## Examples
