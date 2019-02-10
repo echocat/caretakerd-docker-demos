@@ -11,12 +11,12 @@ services:
     php-fpm:
         preCommands:
         - ["mkdir","-p","/opt/app/var/logs"]
-        command: ["php-fpm","-R","-F"]
+        command: ["php-fpm5","-R","-F"]
         logger:
             pattern: "[%c] %m%n"
 
     increment-counter:
         preCommands:
         - ["mkdir","-p","/opt/app/var"]
-        command: ["php","-f","/opt/app/scripts/increment-counter.php"]
+        command: ["php5","-f","/opt/app/scripts/increment-counter.php"]
         cronExpression: "@every 5s"

@@ -1,0 +1,7 @@
+install: skip
+services:
+  - docker
+before_script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+script:
+  - sh ./build.sh all deploy

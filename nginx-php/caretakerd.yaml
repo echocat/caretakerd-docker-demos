@@ -11,7 +11,7 @@ services:
     php-fpm:
         preCommands:
         - ["mkdir","-p","/opt/app/var/logs"]
-        command: ["php-fpm","-R","-F"]
+        command: ["php-fpm5","-R","-F"]
         logger:
             pattern: "[%c] %m%n"
 
